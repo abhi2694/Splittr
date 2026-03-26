@@ -28,6 +28,9 @@ login_manager.init_app(app)
 # mail = Mail(app)
 mail.init_app(app)
 
+from groups import groups
+app.register_blueprint(groups)
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
